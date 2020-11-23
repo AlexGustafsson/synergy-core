@@ -34,14 +34,14 @@ SerialKey::SerialKey(Edition edition):
     m_userLimit(99),
     m_warnTime(ULLONG_MAX),
     m_expireTime(ULLONG_MAX),
-    m_edition(edition)
+    m_edition(kPro)
 {
 }
 
 SerialKey::SerialKey(std::string serial) :
     m_userLimit(99),
-    m_warnTime(0),
-    m_expireTime(0),
+    m_warnTime(ULLONG_MAX),
+    m_expireTime(ULLONG_MAX),
     m_edition(kPro)
 {
     string plainText = decode(serial);

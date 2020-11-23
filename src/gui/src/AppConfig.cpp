@@ -389,7 +389,7 @@ void AppConfig::setEdition(Edition e) {
     setSettingModified(m_Edition, e);
 }
 
-Edition AppConfig::edition() const { return m_Edition; }
+Edition AppConfig::edition() const { return kPro; }
 
 void AppConfig::setSerialKey(const QString& serial) {
     setSettingModified(m_Serialkey, serial);
@@ -582,5 +582,3 @@ void AppConfig::generateCertificate(bool forceGeneration) const {
     sslCertificate.generateCertificate(getTLSCertPath(), getTLSKeyLength(), forceGeneration);
     emit sslToggled();
 }
-
-

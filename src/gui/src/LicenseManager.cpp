@@ -84,7 +84,7 @@ LicenseManager::notifyUpdate(QString fromVersion, QString toVersion) const {
 Edition
 LicenseManager::activeEdition() const
 {
-    return m_serialKey.edition();
+    return kPro;
 }
 
 QString
@@ -102,17 +102,7 @@ LicenseManager::serialKey() const
 void
 LicenseManager::refresh()
 {
-    if (!m_AppConfig->serialKey().isEmpty()) {
-        try {
-            SerialKey serialKey (m_AppConfig->serialKey().toStdString());
-            setSerialKey(serialKey, true);
-        } catch (...) {
-            m_AppConfig->clearSerialKey();
-        }
-    }
-    if (!m_serialKey.isValid()) {
-        emit InvalidLicense();
-    }
+
 }
 
 void
