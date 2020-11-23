@@ -1,5 +1,7 @@
 # Synergy Core
 
+> This fork contains a modified version of synergy without licensing checks. It also includes two scripts to easily build for macOS Big Sur and Ubuntu 20.04 (build-macos.sh and build-ubuntu.sh). For testing purposes only.
+
 This is the open source core component of Synergy, a keyboard and mouse sharing tool.
 
 **[We're hiring!](https://careers.symless.com/)** *Join the Synergy Team (Node.js, React, C++)*

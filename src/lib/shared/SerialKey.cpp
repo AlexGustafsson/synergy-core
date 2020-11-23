@@ -31,7 +31,7 @@ using namespace std;
 static std::string hexEncode (std::string const& str);
 
 SerialKey::SerialKey(Edition edition):
-    m_userLimit(1),
+    m_userLimit(99),
     m_warnTime(ULLONG_MAX),
     m_expireTime(ULLONG_MAX),
     m_edition(edition)
@@ -39,10 +39,10 @@ SerialKey::SerialKey(Edition edition):
 }
 
 SerialKey::SerialKey(std::string serial) :
-    m_userLimit(1),
+    m_userLimit(99),
     m_warnTime(0),
     m_expireTime(0),
-    m_edition(kBasic)
+    m_edition(kPro)
 {
     string plainText = decode(serial);
     bool valid = false;
@@ -57,62 +57,37 @@ SerialKey::SerialKey(std::string serial) :
 bool
 SerialKey::isExpiring(time_t currentTime) const
 {
-    bool result = false;
-
-    if (isTemporary()) {
-        unsigned long long currentTimeAsLL = static_cast<unsigned long long>(currentTime);
-        if ((m_warnTime <= currentTimeAsLL) && (currentTimeAsLL < m_expireTime)) {
-            result = true;
-        }
-    }
-
-    return result;
+    return false;
 }
 
 bool
 SerialKey::isExpired(time_t currentTime) const
 {
-    bool result = false;
-
-    if (isTemporary()) {
-        unsigned long long currentTimeAsLL = static_cast<unsigned long long>(currentTime);
-        if (m_expireTime <= currentTimeAsLL) {
-            result = true;
-        }
-    }
-
-    return result;
+    return false;
 }
 
 bool
 SerialKey::isTrial() const
 {
-    return m_KeyType.isTrial();
+    return false;
 }
 
 bool
 SerialKey::isTemporary() const
 {
-    return m_KeyType.isTemporary();
+    return false;
 }
 
 bool
 SerialKey::isValid() const
 {
-    bool Valid = true;
-
-    if (m_edition.getType() == kUnregistered || isExpired(::time(0)))
-    {
-        Valid = false;
-    }
-
-    return Valid;
+    return true;
 }
 
 Edition
 SerialKey::edition() const
 {
-    return m_edition.getType();
+    return kPro;
 }
 
 static std::string

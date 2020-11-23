@@ -230,6 +230,7 @@ LicenseManager::getTemporaryNotice() const
 void
 LicenseManager::validateSerialKey() const
 {
+  /* Do nothing instead of evaluating the license
     if (m_serialKey.isValid()) {
         if (m_serialKey.isTemporary()){
            QTimer::singleShot(m_serialKey.getSpanLeft(), this, SLOT(validateSerialKey()));
@@ -238,4 +239,5 @@ LicenseManager::validateSerialKey() const
     else{
         emit InvalidLicense();
     }
+  */
 }
